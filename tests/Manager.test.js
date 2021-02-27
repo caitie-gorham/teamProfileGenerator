@@ -4,16 +4,18 @@ const Employee = require("../lib/Employee");
 
 describe("Manager class", () => {
     // test the creation of a new instance of the object - should have added property officeNumber
-    it("should do something", () => {
+    it("should create a new Manager class with name, id, email and officeNumber", () => {
+        const manage = {
+            name = "whatUp",
+            id = 4,
+            email = "hola@hola.com",
+            officeNumber = 212
+        };
         
-    });
+        const manage1 = new Manager("whatUp", 4, "hola@hola.com", 212);
 
-    // test getRole method - should be manager
-    describe("getRole", () => {
-        it("should do something", () => {
-            
-        });
-
+        expect(manage).toEqual(manage1);
+        
     });
 
 
