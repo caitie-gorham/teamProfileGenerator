@@ -20,6 +20,7 @@ function kickPrompt() {
             name: "workrole",
             choice: ["Manager", "Engineer", "Intern"]
         }
+    // use .then() to to kick off the three class-specific inquirer prompts
     ]).then(response => {
         if(response.choices === "Manager") {
             kickManager();
@@ -30,11 +31,98 @@ function kickPrompt() {
     });
 }
 // class-specific inquirer prompts
-function kickManager();
-function kickEngineer();
-function kickIntern();
+// manager inquirer prompt - needs name, id, email, officeNumber
+function kickManager() {
+    return inquirer.prompt([
+        {
+            type: "input",
+            message: "Manager Name:",
+            name: "name"
+        },
+        {
+            type: "input",
+            message: "Manager ID:",
+            name: "id"
+        },
+        {
+            type: "input",
+            message: "Manager Email:",
+            name: "email"
+        },
+        {
+            type: "input",
+            message: "Manager Office Number:",
+            name: "officeNumber"
+        }
+    // create new Manager class with input information
+    ]).then(response => {
+        let manage = new Manager(response.name, response.id, response.email, response.officeNumber)
+        // need to somehow append manage to html page
+        // need to somehow restart the prompts to have more user input
+    });
+};
+// engineer inquirer prompt - needs name, id, email, github
+function kickEngineer() {
+    return inquirer.prompt([
+        {
+            type: "input",
+            message: "Engineer Name:",
+            name: "name"
+        },
+        {
+            type: "input",
+            message: "Engineer ID:",
+            name: "id"
+        },
+        {
+            type: "input",
+            message: "Engineer Email:",
+            name: "email"
+        },
+        {
+            type: "input",
+            message: "Engineer Github Username:",
+            name: "github"
+        }
+    // create new Engineer class with input information
+    ]).then(response => {
+        let engine = new Engineer(response.name, response.id, response.email, response.github)
+        // need to somehow append engine to html page
+        // need to somehow restart the prompts to have more user input
+    });
+};
+// intern inquirer prompt - needs name, id, email, school
+function kickIntern() {
+    return inquirer.prompt([
+        {
+            type: "input",
+            message: "Intern Name:",
+            name: "name"
+        },
+        {
+            type: "input",
+            message: "Intern ID:",
+            name: "id"
+        },
+        {
+            type: "input",
+            message: "Intern Email:",
+            name: "email"
+        },
+        {
+            type: "input",
+            message: "Intern School:",
+            name: "school"
+        }
+    // create new Intern class with input information
+    ]).then(response => {
+        let intern1 = new Intern(response.name, response.id, response.email, response.school);
+        // need to somehow append intern1 to html page
+        // need to somehow restart the prompts to have more user input
+    })
+};
 
-// function to kick off inquirer prompts
+// callback function to kickPrompt()
 function init() {
     kickPrompt();
 }
