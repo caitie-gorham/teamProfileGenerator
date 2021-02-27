@@ -55,11 +55,27 @@ function kickManager() {
             type: "input",
             message: "Manager Office Number:",
             name: "officeNumber"
+        },
+        // inquirer prompt that allows user to choose to input a new employee after they finish this one or choose none if they are done
+        {
+            type: "list",
+            message: "Choose type of next employee",
+            name: "workroleNew",
+            choice: ["Manager", "Engineer", "Intern", "None"]
         }
     // create new Manager class with input information
     ]).then(response => {
         fullTeam.push(new Manager(response.name, response.id, response.email, response.officeNumber))
-        // need to somehow restart the prompts to have more user input
+        // if/else statement to kick off class-specific inquirer prompts 
+        if(response.workroleNew === "Manager") {
+            kickManager();
+        } else if(response.workroleNew === "Engineer") {
+            kickEngineer();
+        } else if(response.workroleNew === "Intern") {
+            kickIntern();
+        } else {
+            // need to figure out how to prompt creation of HTML here
+        }
     });
 };
 // engineer inquirer prompt - needs name, id, email, github
@@ -84,11 +100,26 @@ function kickEngineer() {
             type: "input",
             message: "Engineer Github Username:",
             name: "github"
+        },
+        // inquirer prompt that allows user to choose to input a new employee after they finish this one or choose none if they are done
+        {
+            type: "list",
+            message: "Choose type of next employee",
+            name: "workroleNew",
+            choice: ["Manager", "Engineer", "Intern", "None"]
         }
     // create new Engineer class with input information
     ]).then(response => {
         fullTeam.push(new Engineer(response.name, response.id, response.email, response.github))
-        // need to somehow restart the prompts to have more user input
+        if(response.workroleNew === "Manager") {
+            kickManager();
+        } else if(response.workroleNew === "Engineer") {
+            kickEngineer();
+        } else if(response.workroleNew === "Intern") {
+            kickIntern();
+        } else {
+            // need to figure out how to prompt creation of HTML here
+        }
     });
 };
 // intern inquirer prompt - needs name, id, email, school
@@ -113,12 +144,26 @@ function kickIntern() {
             type: "input",
             message: "Intern School:",
             name: "school"
+        },
+        // inquirer prompt that allows user to choose to input a new employee after they finish this one or choose none if they are done
+        {
+            type: "list",
+            message: "Choose type of next employee",
+            name: "workroleNew",
+            choice: ["Manager", "Engineer", "Intern", "None"]
         }
     // create new Intern class with input information
     ]).then(response => {
         fullTeam.push(new Intern(response.name, response.id, response.email, response.school));
-        // need to somehow append intern1 to html page
-        // need to somehow restart the prompts to have more user input
+        if(response.workroleNew === "Manager") {
+            kickManager();
+        } else if(response.workroleNew === "Engineer") {
+            kickEngineer();
+        } else if(response.workroleNew === "Intern") {
+            kickIntern();
+        } else {
+            // need to figure out how to prompt creation of HTML here
+        }
     })
 };
 
