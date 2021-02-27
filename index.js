@@ -10,6 +10,8 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
 
+let fullTeam = [];
+
 // inquirer prompt to get back workrole of employee and kick off class-specific inquirer prompt
 function kickPrompt() {
     // return the inquirer prompt
@@ -56,8 +58,7 @@ function kickManager() {
         }
     // create new Manager class with input information
     ]).then(response => {
-        let manage = new Manager(response.name, response.id, response.email, response.officeNumber)
-        // need to somehow append manage to html page
+        fullTeam.push(new Manager(response.name, response.id, response.email, response.officeNumber))
         // need to somehow restart the prompts to have more user input
     });
 };
@@ -86,8 +87,7 @@ function kickEngineer() {
         }
     // create new Engineer class with input information
     ]).then(response => {
-        let engine = new Engineer(response.name, response.id, response.email, response.github)
-        // need to somehow append engine to html page
+        fullTeam.push(new Engineer(response.name, response.id, response.email, response.github))
         // need to somehow restart the prompts to have more user input
     });
 };
@@ -116,7 +116,7 @@ function kickIntern() {
         }
     // create new Intern class with input information
     ]).then(response => {
-        let intern1 = new Intern(response.name, response.id, response.email, response.school);
+        fullTeam.push(new Intern(response.name, response.id, response.email, response.school));
         // need to somehow append intern1 to html page
         // need to somehow restart the prompts to have more user input
     })
