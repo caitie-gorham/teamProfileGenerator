@@ -172,7 +172,10 @@ function teamProfiles(){
     for(i = 0; i < fullTeam.length; i++) {
         cardString = cardString + `<div class="card bg-secondary text-white" style="width: 18rem;">
         <h5 class="card-header bg-primary">${fullTeam[i].name}</h5>
-        <h6 class="card-header card-subtitle mb-2 bg-primary">${fullTeam[i].getRole()}</h6>
+        <h6 class="card-header card-subtitle mb-2 bg-primary">${fullTeam[i].getRole() === "Engineer" ? `<i class="fas fa-glasses"></i>` : ""}
+        ${fullTeam[i].getRole() === "Intern" ? `<i class="fas fa-user-graduate"></i>` : ""}
+        ${fullTeam[i].getRole() === "Manager" ? `<i class="fas fa-mug-hot"></i>` : ""} ${fullTeam[i].getRole()}
+        </h6>
         <div class="card-body">
           <p class="card-text">ID: ${fullTeam[i].id}</p>
           <p class="card-text">Email: ${fullTeam[i].email}</p>
@@ -194,6 +197,10 @@ function buildPage() {
         <title>Team Builder</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <script
+            src="https://use.fontawesome.com/releases/v5.15.2/js/all.js"
+            data-auto-a11y="true">
+        </script>
         <style>
         .page-header {
             padding: 15px;
@@ -202,6 +209,7 @@ function buildPage() {
             margin: 0 auto;
             margin-bottom: 5px;
             margin-top: 5px;
+            box-shadow: 3px 5px #888888;
         }
         </style>
     </head>
