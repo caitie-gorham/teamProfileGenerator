@@ -170,10 +170,10 @@ function kickIntern() {
 function teamProfiles(){
     let cardString = "";
     for(i = 0; i < fullTeam.length; i++) {
-        cardString = cardString + `<div class="card" style="width: 18rem;">
+        cardString = cardString + `<div class="card bg-secondary text-white" style="width: 18rem;">
+        <h5 class="card-header bg-primary">${fullTeam[i].name}</h5>
+        <h6 class="card-header card-subtitle mb-2 bg-primary">${fullTeam[i].getRole()}</h6>
         <div class="card-body">
-          <h5 class="card-title">${fullTeam[i].name}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">${fullTeam[i].getRole()}</h6>
           <p class="card-text">ID: ${fullTeam[i].id}</p>
           <p class="card-text">Email: ${fullTeam[i].email}</p>
           <p class="card-text">${fullTeam[i].getValue()}</p>
@@ -198,6 +198,11 @@ function buildPage() {
         .page-header {
             padding: 15px;
         }
+        .card {
+            margin: 0 auto;
+            margin-bottom: 5px;
+            margin-top: 5px;
+        }
         </style>
     </head>
     <body>
@@ -213,7 +218,7 @@ function buildPage() {
     </body>
     </html>`
     
-    fs.writeFile("MyTeam.html", htmlString, (err) => { 
+    fs.writeFile("dist/MyTeam.html", htmlString, (err) => { 
         if (err) 
           console.log(err); 
         else { 
