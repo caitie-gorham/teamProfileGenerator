@@ -24,9 +24,9 @@ function kickPrompt() {
         }
     // use .then() to to kick off the three class-specific inquirer prompts
     ]).then(response => {
-        if(response.choices === "Manager") {
+        if(response.choice === "Manager") {
             kickManager();
-        } else if (response.choices === "Engineer") {
+        } else if (response.choice === "Engineer") {
             kickEngineer();
         } else 
             kickIntern();
@@ -74,7 +74,7 @@ function kickManager() {
         } else if(response.workroleNew === "Intern") {
             kickIntern();
         } else {
-            // need to figure out how to prompt creation of HTML here
+            buildPage()
         }
     });
 };
@@ -118,7 +118,7 @@ function kickEngineer() {
         } else if(response.workroleNew === "Intern") {
             kickIntern();
         } else {
-            // need to figure out how to prompt creation of HTML here
+            buildPage()
         }
     });
 };
@@ -162,7 +162,7 @@ function kickIntern() {
         } else if(response.workroleNew === "Intern") {
             kickIntern();
         } else {
-            // need to figure out how to prompt creation of HTML here
+            buildPage()
         }
     })
 };
@@ -196,7 +196,11 @@ function buildPage() {
         <title>Team Builder</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-        <link href="./style.css" rel="stylesheet">
+        <style>
+        .page-header {
+            padding: 15px;
+        }
+        </style>
     </head>
     <body>
         <div class="container-fluid">
