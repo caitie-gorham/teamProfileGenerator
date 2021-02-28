@@ -1,3 +1,9 @@
 .page-header {
     padding: 15px;
 }
+
+.card {
+    margin: 0 auto;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
