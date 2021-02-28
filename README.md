@@ -14,6 +14,8 @@
 
 This is a command line application that allows users to input employee information and create an HTML file that displays that information. 
 
+![Alt Text](./assets/ProcessGIF.gif)
+
 ![Alt text](./assets/HTML_Render.png?raw=true "Rendered HTML")
 
 # Access
