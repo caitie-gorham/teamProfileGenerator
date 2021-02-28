@@ -20,13 +20,13 @@ function kickPrompt() {
             type: "list",
             message: "Choose the employee work role",
             name: "workrole",
-            choice: ["Manager", "Engineer", "Intern"]
+            choices: ["Manager", "Engineer", "Intern"]
         }
     // use .then() to to kick off the three class-specific inquirer prompts
     ]).then(response => {
-        if(response.choice === "Manager") {
+        if(response.choices === "Manager") {
             kickManager();
-        } else if (response.choice === "Engineer") {
+        } else if (response.choices === "Engineer") {
             kickEngineer();
         } else 
             kickIntern();
@@ -61,7 +61,7 @@ function kickManager() {
             type: "list",
             message: "Choose type of next employee",
             name: "workroleNew",
-            choice: ["Manager", "Engineer", "Intern", "None"]
+            choices: ["Manager", "Engineer", "Intern", "None"]
         }
     // create new Manager class with input information
     ]).then(response => {
@@ -106,7 +106,7 @@ function kickEngineer() {
             type: "list",
             message: "Choose type of next employee",
             name: "workroleNew",
-            choice: ["Manager", "Engineer", "Intern", "None"]
+            choices: ["Manager", "Engineer", "Intern", "None"]
         }
     // create new Engineer class with input information
     ]).then(response => {
@@ -150,7 +150,7 @@ function kickIntern() {
             type: "list",
             message: "Choose type of next employee",
             name: "workroleNew",
-            choice: ["Manager", "Engineer", "Intern", "None"]
+            choices: ["Manager", "Engineer", "Intern", "None"]
         }
     // create new Intern class with input information
     ]).then(response => {
@@ -167,27 +167,25 @@ function kickIntern() {
     })
 };
 
-const teamProfiles = () => {
+function teamProfiles(){
     let cardString = "";
     for(i = 0; i < fullTeam.length; i++) {
-        cardString += `<div class="card" style="width: 18rem;">
+        cardString = cardString + `<div class="card" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title">${fullTeam[i].name}</h5>
           <h6 class="card-subtitle mb-2 text-muted">${fullTeam[i].getRole()}</h6>
-          <p class="card-text">${fullTeam[i].id}</p>
-          <p class="card-text">${fullTeam[i].email}</p>
+          <p class="card-text">ID: ${fullTeam[i].id}</p>
+          <p class="card-text">Email: ${fullTeam[i].email}</p>
           <p class="card-text">${fullTeam[i].getValue()}</p>
         </div>
       </div>`
     }
 
-    console.log(cardString);
-
     return cardString;
 }
 
 function buildPage() {
-    return `<!DOCTYPE html>
+    let htmlString = `<!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -207,15 +205,22 @@ function buildPage() {
             <div class="page-header bg-danger text-white text-center">
                 <h2>My Team</h2>
             </div>
-            ${teamProfiles}
+            ${teamProfiles()}
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
             crossorigin="anonymous"></script>
     </body>
     </html>`
+    
+    fs.writeFile("MyTeam.html", htmlString, (err) => { 
+        if (err) 
+          console.log(err); 
+        else { 
+          console.log("File written successfully\n");
+        } 
+      }); 
 }
-
 
 // callback function to kickPrompt()
 function init() {
