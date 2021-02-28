@@ -6,10 +6,10 @@ describe("Intern class", () => {
     // test the creation of a new instance of the object - should have added property school
     it("should create a new Intern class with name, id, email and school", () => {
         const int = {
-            name = "int",
-            id = 3,
-            email = "howdy@howdy.com",
-            school = "TheSchoolOfLife"
+            name: "int",
+            id: 3,
+            email: "howdy@howdy.com",
+            school: "TheSchoolOfLife"
         };
         const int1 = new Intern("int", 3, "howdy@howdy.com", "TheSchoolOfLife");
 

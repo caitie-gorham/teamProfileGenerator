@@ -6,10 +6,10 @@ describe("Manager class", () => {
     // test the creation of a new instance of the object - should have added property officeNumber
     it("should create a new Manager class with name, id, email and officeNumber", () => {
         const manage = {
-            name = "whatUp",
-            id = 4,
-            email = "hola@hola.com",
-            officeNumber = 212
+            name: "whatUp",
+            id: 4,
+            email: "hola@hola.com",
+            officeNumber: 212
         };
         
         const manage1 = new Manager("whatUp", 4, "hola@hola.com", 212);
